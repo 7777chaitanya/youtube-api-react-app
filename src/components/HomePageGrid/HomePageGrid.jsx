@@ -7,6 +7,7 @@ import useStyles from "./styles";
 
 const HomePageGrid = () => {
 const classes = useStyles();
+
   return (
     <Grid container>
       <Grid item xs={12}> 
