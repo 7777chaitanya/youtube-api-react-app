@@ -14,6 +14,7 @@ export const HomePageVideosProvider = ({ children }) => {
 
   const handleSubmit = async (e) => {
     e && e.preventDefault();
+    try{
     const {data} = await instance.get("search", {
       params: {
         part: "snippet",
@@ -26,6 +27,10 @@ export const HomePageVideosProvider = ({ children }) => {
     });
     setHomePageVideos([data?.items]);
     console.log("response=>", data?.items);
+  }
+  catch(error){
+    console.log(error.message)
+  }
   };
 
   const value = {
