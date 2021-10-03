@@ -1,5 +1,12 @@
 import App from "./App";
-import ReactDOM from 'react-dom';
-import "./index.css"
+import ReactDOM from "react-dom";
+import "./index.css";
+import { HomePageVideosProvider } from "./contexts/HomePageVideosContext";
 
-ReactDOM.render(<App/>,document.getElementById("root"))
+ReactDOM.render(
+  <HomePageVideosProvider>
+    <App />
+  </HomePageVideosProvider>,
+
+  document.getElementById("root")
+);
