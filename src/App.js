@@ -1,11 +1,13 @@
 import React from 'react';
-import { NavBar } from './components';
+import { NavBar, HomePageGrid } from './components';
+
 
 const App = () => {
     return (
         <div>
-            app
+            
             <NavBar/>
+            <HomePageGrid/>
         </div>
     )
 }

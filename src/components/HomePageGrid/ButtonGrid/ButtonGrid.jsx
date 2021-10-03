@@ -1,14 +1,13 @@
 import React from 'react';
 import useStyles from "./styles";
-import instance from "../../api/youtubeAxiosInstance";
 
-const VideosGrid = () => {
+const ButtonGrid = () => {
     const classes = useStyles();
     return (
         <div>
-            videos grid
+            Buton grid
         </div>
     )
 }
 
-export default VideosGrid
+export default ButtonGrid
