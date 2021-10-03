@@ -1,13 +1,21 @@
 import React from 'react';
 import useStyles from "./styles";
-import instance from "../../api/youtubeAxiosInstance";
+import { Grid } from '@material-ui/core';
+import VideoCard from "./VideoCard/VideoCard";
 
-const VideosGrid = () => {
+const VideosGrid = ({videos}) => {
     const classes = useStyles();
+    console.log("videos _> ",videos)
     return (
-        <div>
-            videos grid
-        </div>
+        
+            
+            <Grid container>
+            {videos[0]?.map(eachVideo => (<Grid item xs={12} sm={6} md={4}>
+                
+                <VideoCard eachVideo={eachVideo}/>
+                </Grid>))}
+            </Grid>
+       
     )
 }
 
