@@ -26,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
     avatar: {
       backgroundColor: red[500],
     },
+    iframeBox:{
+        height : "30vh"
+    }
   }));
 
 export default useStyles;
