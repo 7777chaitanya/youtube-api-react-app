@@ -5,7 +5,12 @@ export const HomePageVideosContext = createContext();
 
 export const HomePageVideosProvider = ({ children }) => {
   const [HomePageVideos, setHomePageVideos] = useState([]);
-  const [searchTerm, setsearchTerm] = useState("");
+  const [searchTerm, setsearchTerm] = useState("javascript");
+
+  useEffect(() => {
+   handleSubmit();
+   setsearchTerm("")
+  }, [])
 
   const handleSubmit = async (e) => {
     e && e.preventDefault();

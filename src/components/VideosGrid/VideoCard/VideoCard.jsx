@@ -31,7 +31,7 @@ export default function VideoCard({eachVideo}) {
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
-            R
+            {eachVideo?.snippet?.channelTitle[0].toUpperCase()}
           </Avatar>
         }
         action={
@@ -39,17 +39,16 @@ export default function VideoCard({eachVideo}) {
             <MoreVertIcon />
           </IconButton>
         }
-        title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
+        title={eachVideo?.snippet?.channelTitle}
+        subheader={new Date(eachVideo?.snippet?.publishTime).toDateString()}
       />
       <CardMedia
         className={classes.media}
         image={eachVideo.snippet.thumbnails.high.url}
-        title="Paella dish"
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-        {eachVideo?.snippet?.description}
+        {eachVideo?.snippet?.title}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>

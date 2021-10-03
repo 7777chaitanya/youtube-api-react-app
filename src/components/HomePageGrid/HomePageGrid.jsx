@@ -1,4 +1,4 @@
-import { Grid } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import React, { useContext } from "react";
 import { HomePageVideosContext } from "../../contexts/HomePageVideosContext";
 import VideosGrid from "../VideosGrid/VideosGrid";
@@ -19,6 +19,12 @@ const HomePageGrid = () => {
   
 
   return (
+    <>
+    {HomePageVideos.length===0 && (
+      <Typography variant="h4" align="center">
+        Loading Videos....
+      </Typography>
+    )}
     <Grid container>
       <Grid item xs={12}>
         <ButtonGrid />
@@ -27,6 +33,7 @@ const HomePageGrid = () => {
         <VideosGrid videos={HomePageVideos} />
       </Grid>
     </Grid>
+    </>
   );
 };
 
