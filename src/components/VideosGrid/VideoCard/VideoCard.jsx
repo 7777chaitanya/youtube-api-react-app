@@ -16,10 +16,21 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import useStyles from "./styles";
 import { Box } from "@material-ui/core";
 import { motion } from "framer-motion"
+import IframePopover from '../IframePopover/IframePopover';
 
-export default function VideoCard({ eachVideo, anchorEl, handleClick, handleClose }) {
+export default function VideoCard({ eachVideo}) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -87,6 +98,7 @@ export default function VideoCard({ eachVideo, anchorEl, handleClick, handleClos
           <ExpandMoreIcon />
         </IconButton>
       </CardActions>
+      <IframePopover anchorEl={anchorEl} handleClick={handleClick} handleClose={handleClose} />
 
       {/* <iframe frameBorder="0" height="100%" width="100%" title="Video Player" src={`https://www.youtube.com/embed/${eachVideo.id.videoId}`} /> */}
     </Card>
