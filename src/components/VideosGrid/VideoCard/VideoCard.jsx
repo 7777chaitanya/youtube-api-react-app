@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -15,12 +15,15 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import useStyles from "./styles";
 import { Box } from "@material-ui/core";
-import { motion } from "framer-motion"
-import IframePopover from '../IframePopover/IframePopover';
+import { motion } from "framer-motion";
+import IframePopover from "../IframePopover/IframePopover";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 
-export default function VideoCard({ eachVideo}) {
+export default function VideoCard({ eachVideo }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+
+  const [liked, setLiked] = useState(false);
 
   const [anchorEl, setAnchorEl] = React.useState(false);
 
@@ -34,6 +37,30 @@ export default function VideoCard({ eachVideo}) {
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+
+  const handleDislike = () => {
+    setLiked(false);
+  };
+
+  const handleLike = () => {
+    setLiked(true);
+  };
+
+  const returnRequiredLikeIcon = () => {
+    if (liked) {
+      return (
+        <IconButton onClick={handleDislike}>
+          <FavoriteIcon />
+        </IconButton>
+      );
+    } else {
+      return (
+        <IconButton onClick={handleLike}>
+          <FavoriteBorderIcon />
+        </IconButton>
+      );
+    }
   };
 
   return (
@@ -52,18 +79,12 @@ export default function VideoCard({ eachVideo}) {
         title={eachVideo?.snippet?.channelTitle}
         subheader={new Date(eachVideo?.snippet?.publishTime).toDateString()}
       />
-      <motion.div
-       whileHover={{ scale: 0.9 }}
-       whileTap={{ scale: 1.0 }}
-      >
-      <CardMedia
-       
-        className={classes.media}
-        image={eachVideo.snippet.thumbnails.high.url}
-        onClick={handleClick}
-      >
-
-      </CardMedia>
+      <motion.div whileHover={{ scale: 0.9 }} whileTap={{ scale: 1.0 }}>
+        <CardMedia
+          className={classes.media}
+          image={eachVideo.snippet.thumbnails.high.url}
+          onClick={handleClick}
+        ></CardMedia>
       </motion.div>
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
@@ -74,6 +95,8 @@ export default function VideoCard({ eachVideo}) {
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
+        {returnRequiredLikeIcon()}
+
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
@@ -88,7 +111,12 @@ export default function VideoCard({ eachVideo}) {
           <ExpandMoreIcon />
         </IconButton>
       </CardActions>
-      <IframePopover anchorEl={anchorEl} handleClick={handleClick} handleClose={handleClose} eachVideo={eachVideo}/>
+      <IframePopover
+        anchorEl={anchorEl}
+        handleClick={handleClick}
+        handleClose={handleClose}
+        eachVideo={eachVideo}
+      />
 
       {/* <iframe frameBorder="0" height="100%" width="100%" title="Video Player" src={`https://www.youtube.com/embed/${eachVideo.id.videoId}`} /> */}
     </Card>

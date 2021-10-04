@@ -60,7 +60,7 @@ export default function ButtonGrid() {
         className={classes.buttonGroup}
       >
         {coursesArray.map((item) => (
-          <Button  onClick={() => handleButtonClick(item)}>
+          <Button  onClick={() => handleButtonClick(item)} key={item}>
             {item}
           </Button>
         ))}
