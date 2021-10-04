@@ -16,7 +16,7 @@ const HomePageGrid = () => {
     handleSubmit,
   } = useContext(HomePageVideosContext);
 
-  
+  console.log("hp=>/",HomePageVideos[0])
 
   return (
     <>
@@ -30,7 +30,7 @@ const HomePageGrid = () => {
         <ButtonGrid />
       </Grid>
       <Grid item xs={12}>
-        <VideosGrid videos={HomePageVideos} />
+        <VideosGrid videos={HomePageVideos[0]} />
       </Grid>
     </Grid>
     </>

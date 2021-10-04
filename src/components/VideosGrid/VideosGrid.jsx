@@ -13,7 +13,7 @@ const VideosGrid = ({ videos }) => {
     <>
     <Grid container>
       
-      {videos[0]?.map((eachVideo) => (
+      {videos?.map((eachVideo) => (
         <Grid item xs={12} sm={6} md={4} key={eachVideo?.id?.videoId}>
           <VideoCard eachVideo={eachVideo}  />
         </Grid>

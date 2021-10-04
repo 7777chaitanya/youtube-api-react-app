@@ -18,14 +18,14 @@ const SidebarListItems = () => {
 
   return (
     <List>
-      <ListItem button onClick={()=>handleButtonClick("Liked Videos")}>
+      <ListItem button onClick={()=>handleButtonClick("likedVideos")}>
         <ListItemIcon>
           <InboxIcon />
         </ListItemIcon>
         <ListItemText primary="Liked Videos" />
       </ListItem>
 
-      <ListItem button onClick={()=>handleButtonClick("Saved Videos")}>
+      <ListItem button onClick={()=>handleButtonClick("savedVideos")}>
         <ListItemIcon>
           <InboxIcon />
         </ListItemIcon>

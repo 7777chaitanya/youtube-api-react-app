@@ -7,7 +7,7 @@ export default async function addToSavedVideos(eachVideo) {
   const docRef = doc(db, "playlist", "yMMoDPe1NtIWtjXajgSb");
   try {
     await updateDoc(docRef, {
-      "Saved Videos" : arrayUnion(eachVideo),
+      "savedVideos" : arrayUnion(eachVideo),
     });
   } catch (e) {
     console.log(e.message);
