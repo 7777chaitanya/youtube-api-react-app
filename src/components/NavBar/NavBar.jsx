@@ -1,4 +1,4 @@
-import {useContext, useState} from "react";
+import { useContext, useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -8,27 +8,36 @@ import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import useStyles from "./styles";
 import { HomePageVideosContext } from "../../contexts/HomePageVideosContext";
-import SideDrawer from './SideDrawer/SideDrawer';
+import SideDrawer from "./SideDrawer/SideDrawer";
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
   const classes = useStyles();
-  const { HomePageVideos, setHomePageVideos, searchTerm, setsearchTerm, handleSubmit } =
-    useContext(HomePageVideosContext);
+  const {
+    HomePageVideos,
+    setHomePageVideos,
+    searchTerm,
+    setsearchTerm,
+    handleSubmit,
+  } = useContext(HomePageVideosContext);
 
-    const [state, setState] = useState({
-      top: false,
-      left: false,
-      bottom: false,
-      right: false,
-    });
-  
-    const toggleDrawer = (anchor, open) => (event) => {
-      if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-        return;
-      }
-  
-      setState({ ...state, [anchor]: open });
-    };
+  const [state, setState] = useState({
+    top: false,
+    left: false,
+    bottom: false,
+    right: false,
+  });
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    setState({ ...state, [anchor]: open });
+  };
 
   const handleSearchTermChange = (e) => {
     console.log(e.target.value);
@@ -48,7 +57,13 @@ export default function NavBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
+          <Typography
+            className={classes.title}
+            variant="h6"
+            noWrap
+            component={Link}
+            to="/"
+          >
             Video Streamer
           </Typography>
           <form action="submit" onSubmit={handleSubmit}>
@@ -69,9 +84,8 @@ export default function NavBar() {
             </div>
           </form>
         </Toolbar>
-        <SideDrawer toggleDrawer={toggleDrawer} state={state}/>
+        <SideDrawer toggleDrawer={toggleDrawer} state={state} />
       </AppBar>
-      
     </div>
   );
 }
