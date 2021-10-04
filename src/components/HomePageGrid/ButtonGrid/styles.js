@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   root: {
     paddingTop: theme.spacing(8),
-    overflowX: "auto",
+    overflow: "scroll",
     margin: theme.spacing(2),
     "&::-webkit-scrollbar": {
       width: "0.1em",
