@@ -8,6 +8,7 @@ export const HomePageVideosProvider = ({ children }) => {
   const [searchTerm, setsearchTerm] = useState("javascript");
 
   useEffect(() => {
+  
    handleSubmit();
    setsearchTerm("")
   }, [])

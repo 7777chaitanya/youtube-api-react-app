@@ -40,12 +40,11 @@ export default function VideoCard({ eachVideo }) {
         title={eachVideo?.snippet?.channelTitle}
         subheader={new Date(eachVideo?.snippet?.publishTime).toDateString()}
       />
-      {/* <CardMedia
+      <CardMedia
         className={classes.media}
-        // image={eachVideo.snippet.thumbnails.high.url}
-        // image={<iframe frameBorder="0" height="100%" width="100%" title="Video Player" src={`https://www.youtube.com/embed/${eachVideo.id.videoId}`} />}
-      > */}
-      <Box className={classes.iframeBox}>
+        image={eachVideo.snippet.thumbnails.high.url}
+      >
+      {/* <Box className={classes.iframeBox}>
       <iframe
         frameBorder="0"
         height="100%"
@@ -54,9 +53,9 @@ export default function VideoCard({ eachVideo }) {
         src={`https://www.youtube.com/embed/${eachVideo.id.videoId}`}
         
       />
-      </Box>
+      </Box> */}
 
-      {/* </CardMedia> */}
+      </CardMedia>
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
           {eachVideo?.snippet?.title}
