@@ -22,14 +22,14 @@ export default function VideoCard({ eachVideo}) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = React.useState(false);
 
   const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+    setAnchorEl(true);
   };
 
   const handleClose = () => {
-    setAnchorEl(null);
+    setAnchorEl(false);
   };
 
   const handleExpandClick = () => {
@@ -62,16 +62,6 @@ export default function VideoCard({ eachVideo}) {
         image={eachVideo.snippet.thumbnails.high.url}
         onClick={handleClick}
       >
-      {/* <Box className={classes.iframeBox}>
-      <iframe
-        frameBorder="0"
-        height="100%"
-        width="100%"
-        title="Video Player"
-        src={`https://www.youtube.com/embed/${eachVideo.id.videoId}`}
-        
-      />
-      </Box> */}
 
       </CardMedia>
       </motion.div>
@@ -98,7 +88,7 @@ export default function VideoCard({ eachVideo}) {
           <ExpandMoreIcon />
         </IconButton>
       </CardActions>
-      <IframePopover anchorEl={anchorEl} handleClick={handleClick} handleClose={handleClose} />
+      <IframePopover anchorEl={anchorEl} handleClick={handleClick} handleClose={handleClose} eachVideo={eachVideo}/>
 
       {/* <iframe frameBorder="0" height="100%" width="100%" title="Video Player" src={`https://www.youtube.com/embed/${eachVideo.id.videoId}`} /> */}
     </Card>

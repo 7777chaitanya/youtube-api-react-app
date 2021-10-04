@@ -1,16 +1,22 @@
 import React from "react";
 import useStyles from "./styles";
 import Typography from "@material-ui/core/Typography";
-import { Card } from "@material-ui/core";
+import { Card,Box} from "@material-ui/core";
 
-const IframePopoverBody = () => {
+const IframePopoverBody = ({eachVideo}) => {
   const classes = useStyles();
   return (
-    <Card className={classes.popOverCard}>
-      <Typography className={classes.typography}>
-        The content of the Popover.
-      </Typography>
-    </Card>
+   
+      <Box className={classes.iframeBox}>
+      <iframe
+        frameBorder="0"
+        height="100%"
+        width="100%"
+        title="Video Player"
+        src={`https://www.youtube.com/embed/${eachVideo.id.videoId}`}
+        
+      />
+      </Box>
   );
 };
 

@@ -5,11 +5,11 @@ import useStyles from "./styles";
 import IframePopoverBody from './IframePopoverBody';
 
 
-export default function IframePopover({anchorEl,handleClick,handleClose}) {
+export default function IframePopover({anchorEl,handleClick,handleClose, eachVideo}) {
   const classes = useStyles();
  
 
-  const open = Boolean(anchorEl);
+  const open = (anchorEl);
   const id = open ? 'simple-popover' : undefined;
 
   return (
@@ -23,15 +23,15 @@ export default function IframePopover({anchorEl,handleClick,handleClose}) {
         anchorEl={anchorEl}
         onClose={handleClose}
         anchorOrigin={{
-          vertical: 'bottom',
+          vertical: 'center',
           horizontal: 'center',
         }}
         transformOrigin={{
-          vertical: 'top',
+          vertical: 'center',
           horizontal: 'center',
         }}
       >
-          <IframePopoverBody/>
+          <IframePopoverBody eachVideo={eachVideo}/>
       </Popover>
     </div>
   );

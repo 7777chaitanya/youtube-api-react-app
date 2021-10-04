@@ -6,15 +6,19 @@ const useStyles = makeStyles((theme) => ({
   typography: {
     padding: theme.spacing(2),
   },
-  popOverCard:{
-    marginLeft : "auto",
-    marginRight : "auto",
-    height : "auto",
+  
+  iframeBox:{
+    margin : "auto",
     [theme.breakpoints.down('sm')]: {
-      width : "95vw"
+      width : "95vw",
+      height : "50vh",
+
+
     },
     [theme.breakpoints.up('sm')]: {
-      width : "70vw"
+      width : "80vw",
+      height : "80vh",
+
     },
   }
 }));
