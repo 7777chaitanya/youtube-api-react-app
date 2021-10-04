@@ -15,6 +15,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import useStyles from "./styles";
 import { Box } from "@material-ui/core";
+import { motion } from "framer-motion"
 
 export default function VideoCard({ eachVideo }) {
   const classes = useStyles();
@@ -40,7 +41,12 @@ export default function VideoCard({ eachVideo }) {
         title={eachVideo?.snippet?.channelTitle}
         subheader={new Date(eachVideo?.snippet?.publishTime).toDateString()}
       />
+      <motion.div
+       whileHover={{ scale: 0.9 }}
+       whileTap={{ scale: 1.0 }}
+      >
       <CardMedia
+       
         className={classes.media}
         image={eachVideo.snippet.thumbnails.high.url}
       >
@@ -56,6 +62,7 @@ export default function VideoCard({ eachVideo }) {
       </Box> */}
 
       </CardMedia>
+      </motion.div>
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
           {eachVideo?.snippet?.title}
