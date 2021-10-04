@@ -17,7 +17,7 @@ import useStyles from "./styles";
 import { Box } from "@material-ui/core";
 import { motion } from "framer-motion"
 
-export default function VideoCard({ eachVideo }) {
+export default function VideoCard({ eachVideo, anchorEl, handleClick, handleClose }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -49,6 +49,7 @@ export default function VideoCard({ eachVideo }) {
        
         className={classes.media}
         image={eachVideo.snippet.thumbnails.high.url}
+        onClick={handleClick}
       >
       {/* <Box className={classes.iframeBox}>
       <iframe
