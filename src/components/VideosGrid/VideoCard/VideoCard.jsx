@@ -5,7 +5,6 @@ import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
@@ -18,12 +17,20 @@ import { Box } from "@material-ui/core";
 import { motion } from "framer-motion";
 import IframePopover from "../IframePopover/IframePopover";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import addToLikedVideos from "../../../firestoreFunctions/addToLikedVideos";
+import removeFromLikedVideos from "../../../firestoreFunctions/removeFromLikedVideos";
+import addToSavedVideos from "../../../firestoreFunctions/addToSavedVideos";
+import removeFromSavedVideos from "../../../firestoreFunctions/removeFromSavedVideos"
+import BookmarkIcon from '@material-ui/icons/Bookmark';
+import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 
 export default function VideoCard({ eachVideo }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
   const [liked, setLiked] = useState(false);
+  const [saved, setSaved] = useState(false);
+
 
   const [anchorEl, setAnchorEl] = React.useState(false);
 
@@ -40,10 +47,12 @@ export default function VideoCard({ eachVideo }) {
   };
 
   const handleDislike = () => {
+    removeFromLikedVideos(eachVideo)
     setLiked(false);
   };
 
   const handleLike = () => {
+    addToLikedVideos(eachVideo);
     setLiked(true);
   };
 
@@ -62,6 +71,35 @@ export default function VideoCard({ eachVideo }) {
       );
     }
   };
+
+  const handleUnsave = () => {
+    removeFromSavedVideos(eachVideo)
+    setSaved(false);
+  };
+
+  const handleSave = () => {
+    addToSavedVideos(eachVideo);
+    setSaved(true);
+  };
+
+  const returnRequiredSaveIcon = () => {
+    if (saved) {
+      return (
+        <IconButton onClick={handleUnsave}>
+          <BookmarkIcon />
+        </IconButton>
+      );
+    } else {
+      return (
+        <IconButton onClick={handleSave}>
+          <BookmarkBorderIcon />
+        </IconButton>
+      );
+    }
+  };
+
+
+
 
   return (
     <Card className={classes.root}>
@@ -96,6 +134,7 @@ export default function VideoCard({ eachVideo }) {
           <FavoriteIcon />
         </IconButton>
         {returnRequiredLikeIcon()}
+        {returnRequiredSaveIcon()}
 
         <IconButton aria-label="share">
           <ShareIcon />
