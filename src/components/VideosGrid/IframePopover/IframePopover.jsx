@@ -1,8 +1,8 @@
 import React from 'react';
 import Popover from '@material-ui/core/Popover';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+
 import useStyles from "./styles";
+import IframePopoverBody from './IframePopoverBody';
 
 
 export default function IframePopover({anchorEl,handleClick,handleClose}) {
@@ -31,7 +31,7 @@ export default function IframePopover({anchorEl,handleClick,handleClose}) {
           horizontal: 'center',
         }}
       >
-        <Typography className={classes.typography}>The content of the Popover.</Typography>
+          <IframePopoverBody/>
       </Popover>
     </div>
   );
