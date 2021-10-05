@@ -4,23 +4,24 @@ import useStyles from "./styles";
 import { List, ListItem, ListItemText, Divider } from "@material-ui/core";
 import { PlaylistContext } from "../../../../../contexts/PlaylistContext";
 import addToRequiredPlaylist from "../../../../../firestoreFunctions/addToRequiredPlaylist";
+import CreatePlaylistPopover from "./CreatePlaylistPopover/CreatePlaylistPopover";
 
 const PlaylistPopoverBody = ({ eachVideo, handleClose1 }) => {
   const classes = useStyles();
   const { playlist } = useContext(PlaylistContext);
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = React.useState(false);
 
   const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+    setAnchorEl(true);
   };
 
   const handleClose = () => {
-    setAnchorEl(null);
+    setAnchorEl(false);
+    handleClose1();
   };
 
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
+
 
   return (
     <div>
@@ -48,24 +49,9 @@ const PlaylistPopoverBody = ({ eachVideo, handleClose1 }) => {
         </ListItem>
       </List>
 
-      <Popover
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "center",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "center",
-        }}
-      >
-        <Typography className={classes.typography}>
-          The content of the Popover.
-        </Typography>
-      </Popover>
+      <CreatePlaylistPopover anchorEl={anchorEl} handleClose={handleClose}/>
+
+
     </div>
   );
 };
