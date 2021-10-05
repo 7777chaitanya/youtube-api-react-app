@@ -32,6 +32,13 @@ const SidebarListItems = () => {
         <ListItemText primary="Saved Videos" />
       </ListItem>
 
+      <ListItem button onClick={()=>handleButtonClick("history")}>
+        <ListItemIcon>
+          <InboxIcon />
+        </ListItemIcon>
+        <ListItemText primary="History" />
+      </ListItem>
+
     </List>
   );
 };
