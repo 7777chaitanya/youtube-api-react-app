@@ -3,10 +3,10 @@ import React from "react";
 import useStyles from "./styles";
 import CreatePlaylistPopoverBody from "./CreatePlaylistPopoverBody/CreatePlaylistPopoverBody";
 
-const CreatePlaylistPopover = ({anchorEl,handleClose}) => {
+const CreatePlaylistPopover = ({anchorEl,handleClose, eachVideo}) => {
     const classes = useStyles();
 
-    const open = Boolean(anchorEl);
+    const open = anchorEl;
     const id = open ? "simple-popover" : undefined;
   return (
     <Popover
@@ -23,7 +23,7 @@ const CreatePlaylistPopover = ({anchorEl,handleClose}) => {
         horizontal: "center",
       }}
     >
-      <CreatePlaylistPopoverBody/>
+      <CreatePlaylistPopoverBody eachVideo={eachVideo} handleClose={handleClose} />
     </Popover>
   );
 };

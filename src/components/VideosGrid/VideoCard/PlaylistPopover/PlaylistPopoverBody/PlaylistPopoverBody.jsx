@@ -10,6 +10,7 @@ const PlaylistPopoverBody = ({ eachVideo, handleClose1 }) => {
   const classes = useStyles();
   const { playlist } = useContext(PlaylistContext);
 
+  //create playlist popover body
   const [anchorEl, setAnchorEl] = React.useState(false);
 
   const handleClick = (event) => {
@@ -49,7 +50,7 @@ const PlaylistPopoverBody = ({ eachVideo, handleClose1 }) => {
         </ListItem>
       </List>
 
-      <CreatePlaylistPopover anchorEl={anchorEl} handleClose={handleClose}/>
+      <CreatePlaylistPopover anchorEl={anchorEl} handleClose={handleClose} eachVideo={eachVideo}/>
 
 
     </div>
