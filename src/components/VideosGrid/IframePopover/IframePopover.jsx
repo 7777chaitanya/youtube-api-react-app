@@ -3,6 +3,7 @@ import Popover from '@material-ui/core/Popover';
 
 import useStyles from "./styles";
 import IframePopoverBody from './IframePopoverBody';
+import addToHistoryVideos from "../../../firestoreFunctions/addToHistoryVideos";
 
 
 export default function IframePopover({anchorEl,handleClick,handleClose, eachVideo}) {
@@ -11,6 +12,12 @@ export default function IframePopover({anchorEl,handleClick,handleClose, eachVid
 
   const open = (anchorEl);
   const id = open ? 'simple-popover' : undefined;
+
+  const handleAddToHistoryPlaylist = () => {
+    console.log("ev id=> ",eachVideo.id.videoId);
+    addToHistoryVideos(eachVideo);
+    
+}
 
   return (
     <div>
@@ -30,6 +37,7 @@ export default function IframePopover({anchorEl,handleClick,handleClose, eachVid
           vertical: 'center',
           horizontal: 'center',
         }}
+        onClick={handleAddToHistoryPlaylist}
       >
           <IframePopoverBody eachVideo={eachVideo}/>
       </Popover>
