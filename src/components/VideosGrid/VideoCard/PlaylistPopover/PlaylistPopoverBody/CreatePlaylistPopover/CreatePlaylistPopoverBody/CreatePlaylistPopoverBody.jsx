@@ -18,6 +18,7 @@ const CreatePlaylistPopoverBody = ({eachVideo, handleClose}) => {
           label="Enter playlist name"
           autoComplete="current-password"
           inputRef={playlistNameRef}
+          autoFocus
         />
 
         <Button color="primary" variant="contained"
