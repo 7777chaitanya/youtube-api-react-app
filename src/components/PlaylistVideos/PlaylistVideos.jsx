@@ -13,7 +13,7 @@ const PlaylistVideos = (props) => {
     <>
       <div style={{ marginTop: "5rem" }}>
         {playlist&& playlistName && 
-        <VideosGrid videos={playlist[playlistName]} />}
+        <VideosGrid videos={playlist[playlistName]} playlistName={playlistName}/>}
       </div>
 
       {/* <h1>{params?.playlistName}</h1> */}

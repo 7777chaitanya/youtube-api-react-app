@@ -10,7 +10,7 @@ const LikedVideosGrid = () => {
     return (
         <div style={{marginTop : "20rem"}}>
             LikedVideosGrid
-            <VideosGrid videos={playlist?.likedVideos} />
+            <VideosGrid videos={playlist?.likedVideos} playlistName="likedVideos"/>
         </div>
     )
 }

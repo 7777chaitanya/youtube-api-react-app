@@ -25,10 +25,13 @@ import BookmarkIcon from "@material-ui/icons/Bookmark";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 import PlaylistAddIcon from "@material-ui/icons/PlaylistAdd";
 import PlaylistPopover from "./PlaylistPopover/PlaylistPopover";
+import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
+import {useLocation} from "react-router-dom"
 
-export default function VideoCard({ eachVideo }) {
+export default function VideoCard({ eachVideo, playlistName }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+  const location = useLocation();
 
   const [liked, setLiked] = useState(false);
   const [saved, setSaved] = useState(false);
@@ -115,6 +118,10 @@ export default function VideoCard({ eachVideo }) {
     console.log("handleAddToPlaylist");
   };
 
+  const printplaylist = () => {
+    console.log("hfldsjfa", playlistName)
+  }
+
   return (
     <Card className={classes.root}>
       <CardHeader
@@ -153,16 +160,10 @@ export default function VideoCard({ eachVideo }) {
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
+        {location.pathname!== "/" && 
+        <IconButton onClick={printplaylist}>
+          <RemoveCircleOutlineIcon />
+        </IconButton>}
       </CardActions>
       <IframePopover
         anchorEl={anchorEl}

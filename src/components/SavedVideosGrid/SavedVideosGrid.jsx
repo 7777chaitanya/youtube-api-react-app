@@ -11,7 +11,7 @@ const SavedVideosGrid = () => {
   return (
     <div style={{ marginTop: "20rem" }}>
       Saved Videos grid
-      <VideosGrid videos={playlist?.savedVideos} />
+      <VideosGrid videos={playlist?.savedVideos} playlistName="savedVideos"/>
     </div>
   );
 };

@@ -4,7 +4,7 @@ import { Grid } from "@material-ui/core";
 import VideoCard from "./VideoCard/VideoCard";
 import IframePopover from "./IframePopover/IframePopover";
 
-const VideosGrid = ({ videos }) => {
+const VideosGrid = ({ videos, playlistName }) => {
   const classes = useStyles();
   console.log("videos _> ", videos);
 
@@ -15,7 +15,7 @@ const VideosGrid = ({ videos }) => {
       
       {videos?.map((eachVideo) => (
         <Grid item xs={12} sm={6} md={4} key={eachVideo?.id?.videoId}>
-          <VideoCard eachVideo={eachVideo}  />
+          <VideoCard eachVideo={eachVideo}  playlistName={playlistName}/>
         </Grid>
       ))}
     </Grid>
