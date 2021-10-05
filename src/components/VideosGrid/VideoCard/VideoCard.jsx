@@ -114,13 +114,7 @@ export default function VideoCard({ eachVideo, playlistName }) {
     setAnchorEl1(null);
   };
 
-  const handleAddToPlaylist = () => {
-    console.log("handleAddToPlaylist");
-  };
-
-  const printplaylist = () => {
-    console.log("hfldsjfa", playlistName)
-  }
+ 
 
   return (
     <Card className={classes.root}>
