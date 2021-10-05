@@ -24,7 +24,7 @@ import removeFromSavedVideos from "../../../firestoreFunctions/removeFromSavedVi
 import BookmarkIcon from "@material-ui/icons/Bookmark";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 import PlaylistAddIcon from "@material-ui/icons/PlaylistAdd";
-import { Popover } from '@material-ui/core';
+import PlaylistPopover from "./PlaylistPopover/PlaylistPopover";
 
 export default function VideoCard({ eachVideo }) {
   const classes = useStyles();
@@ -33,6 +33,7 @@ export default function VideoCard({ eachVideo }) {
   const [liked, setLiked] = useState(false);
   const [saved, setSaved] = useState(false);
 
+  //iframe popover state
   const [anchorEl, setAnchorEl] = React.useState(false);
 
   const handleClick = (event) => {
@@ -99,6 +100,7 @@ export default function VideoCard({ eachVideo }) {
     }
   };
 
+  //playlist popover state
   const [anchorEl1, setAnchorEl1] = React.useState(null);
 
   const handleClick1 = (event) => {
@@ -109,12 +111,9 @@ export default function VideoCard({ eachVideo }) {
     setAnchorEl1(null);
   };
 
-  const open1 = Boolean(anchorEl1);
-  const id1 = open1 ? 'simple-popover' : undefined;
-
   const handleAddToPlaylist = () => {
-    console.log("handleAddToPlaylist")
-  }
+    console.log("handleAddToPlaylist");
+  };
 
   return (
     <Card className={classes.root}>
@@ -172,24 +171,13 @@ export default function VideoCard({ eachVideo }) {
         eachVideo={eachVideo}
       />
 
-      {/* <iframe frameBorder="0" height="100%" width="100%" title="Video Player" src={`https://www.youtube.com/embed/${eachVideo.id.videoId}`} /> */}
 
-      <Popover
-        id={id1}
-        open={open1}
-        anchorEl={anchorEl1}
-        onClose={handleClose1}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'center',
-        }}
-      >
-        <Typography className={classes.typography}>The content of the Popover.</Typography>
-      </Popover>
+      <PlaylistPopover
+        anchorEl1={anchorEl1}
+        handleClick1={handleClick1}
+        handleClose1={handleClose1}
+        eachVideo={eachVideo}
+      />
     </Card>
   );
 }
