@@ -28,7 +28,7 @@ const PlaylistPopover = ({
       }}
     >
    
-      <PlaylistPopoverBody/>
+      <PlaylistPopoverBody eachVideo={eachVideo} handleClose1={handleClose1}/>
     </Popover>
   );
 };
