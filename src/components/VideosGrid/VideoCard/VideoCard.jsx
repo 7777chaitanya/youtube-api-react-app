@@ -20,9 +20,11 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import addToLikedVideos from "../../../firestoreFunctions/addToLikedVideos";
 import removeFromLikedVideos from "../../../firestoreFunctions/removeFromLikedVideos";
 import addToSavedVideos from "../../../firestoreFunctions/addToSavedVideos";
-import removeFromSavedVideos from "../../../firestoreFunctions/removeFromSavedVideos"
-import BookmarkIcon from '@material-ui/icons/Bookmark';
-import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
+import removeFromSavedVideos from "../../../firestoreFunctions/removeFromSavedVideos";
+import BookmarkIcon from "@material-ui/icons/Bookmark";
+import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
+import PlaylistAddIcon from "@material-ui/icons/PlaylistAdd";
+import { Popover } from '@material-ui/core';
 
 export default function VideoCard({ eachVideo }) {
   const classes = useStyles();
@@ -30,7 +32,6 @@ export default function VideoCard({ eachVideo }) {
 
   const [liked, setLiked] = useState(false);
   const [saved, setSaved] = useState(false);
-
 
   const [anchorEl, setAnchorEl] = React.useState(false);
 
@@ -47,7 +48,7 @@ export default function VideoCard({ eachVideo }) {
   };
 
   const handleDislike = () => {
-    removeFromLikedVideos(eachVideo)
+    removeFromLikedVideos(eachVideo);
     setLiked(false);
   };
 
@@ -73,7 +74,7 @@ export default function VideoCard({ eachVideo }) {
   };
 
   const handleUnsave = () => {
-    removeFromSavedVideos(eachVideo)
+    removeFromSavedVideos(eachVideo);
     setSaved(false);
   };
 
@@ -98,8 +99,22 @@ export default function VideoCard({ eachVideo }) {
     }
   };
 
+  const [anchorEl1, setAnchorEl1] = React.useState(null);
 
+  const handleClick1 = (event) => {
+    setAnchorEl1(event.currentTarget);
+  };
 
+  const handleClose1 = () => {
+    setAnchorEl1(null);
+  };
+
+  const open1 = Boolean(anchorEl1);
+  const id1 = open1 ? 'simple-popover' : undefined;
+
+  const handleAddToPlaylist = () => {
+    console.log("handleAddToPlaylist")
+  }
 
   return (
     <Card className={classes.root}>
@@ -130,11 +145,11 @@ export default function VideoCard({ eachVideo }) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
         {returnRequiredLikeIcon()}
         {returnRequiredSaveIcon()}
+        <IconButton aria-label="add to favorites" onClick={handleClick1}>
+          <PlaylistAddIcon />
+        </IconButton>
 
         <IconButton aria-label="share">
           <ShareIcon />
@@ -158,6 +173,23 @@ export default function VideoCard({ eachVideo }) {
       />
 
       {/* <iframe frameBorder="0" height="100%" width="100%" title="Video Player" src={`https://www.youtube.com/embed/${eachVideo.id.videoId}`} /> */}
+
+      <Popover
+        id={id1}
+        open={open1}
+        anchorEl={anchorEl1}
+        onClose={handleClose1}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
+      >
+        <Typography className={classes.typography}>The content of the Popover.</Typography>
+      </Popover>
     </Card>
   );
 }
