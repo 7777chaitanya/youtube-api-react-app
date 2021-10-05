@@ -7,7 +7,8 @@ export default async function addToLikedVideos(eachVideo) {
   const docRef = doc(db, "playlist", "yMMoDPe1NtIWtjXajgSb");
   try {
     await updateDoc(docRef, {
-      "history" : arrayUnion(eachVideo),
+      "history" : arrayUnion({eachVideo : eachVideo, date : new Date()}),
+
     });
   } catch (e) {
     console.log(e.message);

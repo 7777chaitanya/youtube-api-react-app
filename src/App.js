@@ -21,7 +21,7 @@ const App = () => {
           <Route path="/savedVideos">
             <SavedVideosGrid />
           </Route>
-          <Route path="/hsitory">
+          <Route path="/history">
             <HistoryPlaylist />
           </Route>
           <Route path="/playlist/:playlistName" render={
