@@ -26,7 +26,8 @@ import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 import PlaylistAddIcon from "@material-ui/icons/PlaylistAdd";
 import PlaylistPopover from "./PlaylistPopover/PlaylistPopover";
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
-import {useLocation} from "react-router-dom"
+import {useLocation} from "react-router-dom";
+import removeVideoFromPlaylist from "../../../firestoreFunctions/removeVideoFromPlaylist"
 
 export default function VideoCard({ eachVideo, playlistName }) {
   const classes = useStyles();
@@ -155,7 +156,7 @@ export default function VideoCard({ eachVideo, playlistName }) {
           <ShareIcon />
         </IconButton>
         {location.pathname!== "/" && 
-        <IconButton onClick={printplaylist}>
+        <IconButton onClick={() => removeVideoFromPlaylist(eachVideo, playlistName)}>
           <RemoveCircleOutlineIcon />
         </IconButton>}
       </CardActions>
