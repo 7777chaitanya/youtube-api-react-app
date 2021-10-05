@@ -12,6 +12,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
 import SidebarListItems from './SidebarListItems/SidebarListItems';
+import SidebarAllPlaylists from "./SidebarAllPlaylists/SidebarAllPlaylists";
 
 export default function SideDrawer({ toggleDrawer, state }) {
   const classes = useStyles();
@@ -26,6 +27,9 @@ export default function SideDrawer({ toggleDrawer, state }) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <SidebarListItems/>
+      <Divider/>
+      <SidebarAllPlaylists/>
+      <Divider/>
       <List>
         {["Liked Videos", "Saved Videos", "Send email", "Drafts"].map((text, index) => (
           <ListItem button key={text}>
