@@ -11,7 +11,7 @@ const SidebarAllPlaylists = () => {
   return (
     <>
       {playlist?.allPlaylists.map((eachItem) => (
-        <ListItem button component={Link} to={`playlist/${eachItem}`}>
+        <ListItem button component={Link} to={`/playlist/${eachItem}`}>
           <ListItemText primary={eachItem} />
         </ListItem>
       ))}
