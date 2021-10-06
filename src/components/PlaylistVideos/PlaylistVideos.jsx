@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { PlaylistContext } from "../../contexts/PlaylistContext";
 import VideosGrid from "../VideosGrid/VideosGrid";
 import {IconButton, Typography} from "@material-ui/core";
@@ -7,17 +7,24 @@ import deletePlaylist from "../../firestoreFunctions/deletePlaylist";
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 
+
 const PlaylistVideos = (props) => {
   const params = useParams();
   const { playlist } = useContext(PlaylistContext);
   const playlistName = params?.playlistName;
+  const history = useHistory();
+
+  const handlePlaylistDelete = () => {
+    deletePlaylist(playlistName);
+    history.push("/")
+  }
 
   console.log("Params => ", params);
   return (
     <>
       <div style={{ marginTop: "5rem" }}>
         <Typography variant="h5">{playlistName}</Typography>
-        <IconButton onClick={() => deletePlaylist(playlistName)}>
+        <IconButton onClick={handlePlaylistDelete}>
                 <DeleteForeverIcon/>
             </IconButton>
 
