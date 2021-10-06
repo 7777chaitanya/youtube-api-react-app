@@ -56,7 +56,7 @@ const AllPlaylists = () => {
 
     <CreatePlaylistPopover
         anchorEl={anchorEl}
-        onClose={handleClose}
+        handleClose={handleClose}
        
       />
 
