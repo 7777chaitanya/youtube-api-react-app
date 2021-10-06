@@ -1,14 +1,16 @@
-import React from 'react';
+import React from "react";
 import useStyles from "./styles";
-import {Typography} from "@material-ui/core";
+import { Typography, Paper } from "@material-ui/core";
 
-const EachGridItem = ({item}) => {
-    const classes = useStyles();
-    return (
-        <div>
-            <Typography variant="h1">{item}</Typography>
-        </div>
-    )
-}
+const EachGridItem = ({ item }) => {
+  const classes = useStyles();
+  return (
+    <div>
+      <Paper className={classes.eachItemCard} elevation={7} >
+        <Typography variant="h6">{item}</Typography>
+      </Paper>
+    </div>
+  );
+};
 
-export default EachGridItem
+export default EachGridItem;
