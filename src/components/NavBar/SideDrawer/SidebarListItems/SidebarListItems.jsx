@@ -7,6 +7,9 @@ import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
 import {useHistory} from "react-router-dom";
+import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
+import BookmarksIcon from '@material-ui/icons/Bookmarks';
+import HistoryIcon from '@material-ui/icons/History';
 
 const SidebarListItems = () => {
     const handleButtonClick = (buttonContent) => {
@@ -20,21 +23,21 @@ const SidebarListItems = () => {
     <List>
       <ListItem button onClick={()=>handleButtonClick("likedVideos")}>
         <ListItemIcon>
-          <InboxIcon />
+          <ThumbUpAltIcon />
         </ListItemIcon>
         <ListItemText primary="Liked Videos" />
       </ListItem>
 
       <ListItem button onClick={()=>handleButtonClick("savedVideos")}>
         <ListItemIcon>
-          <InboxIcon />
+          <BookmarksIcon />
         </ListItemIcon>
         <ListItemText primary="Saved Videos" />
       </ListItem>
 
       <ListItem button onClick={()=>handleButtonClick("history")}>
         <ListItemIcon>
-          <InboxIcon />
+          <HistoryIcon />
         </ListItemIcon>
         <ListItemText primary="History" />
       </ListItem>
