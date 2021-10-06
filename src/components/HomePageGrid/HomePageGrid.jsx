@@ -1,4 +1,4 @@
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Typography, Button } from "@material-ui/core";
 import React, { useContext } from "react";
 import { HomePageVideosContext } from "../../contexts/HomePageVideosContext";
 import VideosGrid from "../VideosGrid/VideosGrid";
@@ -16,7 +16,11 @@ const HomePageGrid = () => {
     handleSubmit,
   } = useContext(HomePageVideosContext);
 
-  console.log("hp=>/",HomePageVideos[0])
+  console.log("hp=>/",HomePageVideos[0]);
+
+  const handleGoToTop = () => {
+      window.scrollTo(0,0)
+  }
 
   return (
     <>
@@ -33,6 +37,7 @@ const HomePageGrid = () => {
         <VideosGrid videos={HomePageVideos[0]} />
       </Grid>
     </Grid>
+    <Button onClick={handleGoToTop}>Go to top</Button>
     </>
   );
 };
