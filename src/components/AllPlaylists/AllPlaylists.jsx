@@ -1,7 +1,7 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { PlaylistContext } from "../../contexts/PlaylistContext";
 import useStyles from "./styles";
-import { Grid } from "@material-ui/core";
+import { Grid, Popover, Typography } from "@material-ui/core";
 import EachGridItem from "./EachGridItem/EachGridItem";
 import { Link } from "react-router-dom";
 
@@ -12,6 +12,19 @@ const AllPlaylists = () => {
   const handleButtonClick = () => {
     console.log("handle button click");
   };
+
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
 
   return (
       <>
@@ -32,16 +45,32 @@ const AllPlaylists = () => {
       <Grid item xs={6}
           sm={4}
           md={3}
-          onClick={handleButtonClick}
+          onClick={handleClick}
 
           >
         <EachGridItem
           item="Create Playlist"
-          button
         />
       </Grid>
     </Grid>
-        
+
+    <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
+      >
+        <Typography className={classes.typography}>The content of the Popover.</Typography>
+      </Popover>
+
     </>
   );
 };
