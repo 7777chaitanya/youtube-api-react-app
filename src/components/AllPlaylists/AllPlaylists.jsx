@@ -4,6 +4,7 @@ import useStyles from "./styles";
 import { Grid, Popover, Typography } from "@material-ui/core";
 import EachGridItem from "./EachGridItem/EachGridItem";
 import { Link } from "react-router-dom";
+import CreatePlaylistPopover from "./CreatePlaylistPopover/CreatePlaylistPopover";
 
 const AllPlaylists = () => {
   const { playlist } = useContext(PlaylistContext);
@@ -23,8 +24,7 @@ const AllPlaylists = () => {
     setAnchorEl(null);
   };
 
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
+
 
   return (
       <>
@@ -54,22 +54,11 @@ const AllPlaylists = () => {
       </Grid>
     </Grid>
 
-    <Popover
-        id={id}
-        open={open}
+    <CreatePlaylistPopover
         anchorEl={anchorEl}
         onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'center',
-        }}
-      >
-        <Typography className={classes.typography}>The content of the Popover.</Typography>
-      </Popover>
+       
+      />
 
     </>
   );
