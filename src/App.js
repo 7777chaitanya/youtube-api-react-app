@@ -6,8 +6,10 @@ import {
   LikedVideosGrid,
   SavedVideosGrid,
   PlaylistVideos,
-  HistoryPlaylist
+  HistoryPlaylist,
+  AllPlaylists
 } from "./components";
+
 
 const App = () => {
   return (
@@ -24,16 +26,17 @@ const App = () => {
           <Route path="/history">
             <HistoryPlaylist />
           </Route>
-          <Route path="/playlist/:playlistName" render={
-            
-            (props)=><PlaylistVideos {...props}/>}/>
-        
-
+          <Route
+            path="/playlist/:playlistName"
+            render={(props) => <PlaylistVideos {...props} />}
+          />
+          <Route path="/allPlaylists">
+            <AllPlaylists/>
+          </Route>
 
           <Route path="/">
             <HomePageGrid />
           </Route>
-
         </Switch>
       </Router>
     </div>
