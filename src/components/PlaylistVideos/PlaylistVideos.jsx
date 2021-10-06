@@ -20,8 +20,14 @@ const PlaylistVideos = (props) => {
         <IconButton onClick={() => deletePlaylist(playlistName)}>
                 <DeleteForeverIcon/>
             </IconButton>
-        {playlist&& playlistName && 
-        <VideosGrid videos={playlist[playlistName]} playlistName={playlistName}/>}
+
+            {playlist&& playlistName && 
+            (playlist[playlistName]?.length==0 ?
+            (<Typography variant="h5">There are no videos in this playlist</Typography>)
+            :
+
+        
+        <VideosGrid videos={playlist[playlistName]} playlistName={playlistName}/>)}
       </div>
 
       {/* <h1>{params?.playlistName}</h1> */}
