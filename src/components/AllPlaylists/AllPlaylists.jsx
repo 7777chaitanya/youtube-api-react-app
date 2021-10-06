@@ -14,6 +14,7 @@ const AllPlaylists = () => {
   };
 
   return (
+      <>
     <Grid container className={classes.playlistGrid}>
       {playlist.allPlaylists?.map((item) => (
         <Grid
@@ -40,6 +41,8 @@ const AllPlaylists = () => {
         />
       </Grid>
     </Grid>
+        
+    </>
   );
 };
 
