@@ -1,10 +1,11 @@
-import { Grid, Typography, Button } from "@material-ui/core";
+import { Grid, Typography, Button, IconButton, Box } from "@material-ui/core";
 import React, { useContext } from "react";
 import { HomePageVideosContext } from "../../contexts/HomePageVideosContext";
 import VideosGrid from "../VideosGrid/VideosGrid";
 import ButtonGrid from "./ButtonGrid/ButtonGrid";
 
 import useStyles from "./styles";
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 
 const HomePageGrid = () => {
   const classes = useStyles();
@@ -37,7 +38,11 @@ const HomePageGrid = () => {
         <VideosGrid videos={HomePageVideos[0]} />
       </Grid>
     </Grid>
-    <Button onClick={handleGoToTop}>Go to top</Button>
+    <Box className={classes.goToTopButtonBox}>
+    <IconButton  onClick={handleGoToTop}>
+      <ArrowUpwardIcon  />
+    </IconButton>
+    </Box>
     </>
   );
 };
