@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
+import {Typography,Box} from "@material-ui/core";
 import InputBase from "@material-ui/core/InputBase";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
@@ -57,7 +57,9 @@ export default function NavBar() {
           >
             <MenuIcon />
           </IconButton>
-          <img src={`${process.env.PUBLIC_URL}/tv.png`} alt="logo" className={classes.navbarLogo} />
+          <Box component={Link} to="/">
+          <img src={`${process.env.PUBLIC_URL}/tv.png`} alt="logo" className={classes.navbarLogo} 
+            /></Box>
           <Typography
             className={classes.title}
             variant="h5"
