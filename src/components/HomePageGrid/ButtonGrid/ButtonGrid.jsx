@@ -55,7 +55,7 @@ export default function ButtonGrid() {
     <div className={classes.root}>
       {searchTerm}
       <ButtonGroup
-        color="primary"
+        color="secondary"
         aria-label="outlined primary button group"
         className={classes.buttonGroup}
       >
