@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import useStyles from "./styles";
 import VideosGrid from "../VideosGrid/VideosGrid";
 import { PlaylistContext } from "../../contexts/PlaylistContext";
-import { IconButton, Typography } from "@material-ui/core";
+import { IconButton, Typography, Paper, Box } from "@material-ui/core";
 import deletePlaylist from "../../firestoreFunctions/deletePlaylist";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 
@@ -12,13 +12,22 @@ const SavedVideosGrid = () => {
   console.log("sv => ", playlist?.savedVideos);
 
   return (
-    <div style={{ marginTop: "20rem" }}>
-      Saved Videos grid
-      <IconButton onClick={() => deletePlaylist("savedVideos")}>
-        <DeleteForeverIcon />
-      </IconButton>
+    <div style={{ marginTop: "5rem" }}>
+     <Box className={classes.headerBox}>
+        <Typography variant="h4" align="center">
+          Saved Videos
+        </Typography>
+
+        <IconButton onClick={() => deletePlaylist("likedVideos")}>
+          <DeleteForeverIcon color="secondary" className={classes.deleteIcon}/>
+        </IconButton>
+      </Box>
       {playlist?.savedVideos?.length == 0 ? (
-        <Typography variant="h5">There are no saved videos</Typography>
+                <Paper elevation={9} className={classes.noItemsPaper}>
+                <Typography variant="h5" align="center">
+                  There are no saved videos
+                </Typography>
+              </Paper>
       ) : (
         <VideosGrid videos={playlist?.savedVideos} playlistName="savedVideos" />
       )}
