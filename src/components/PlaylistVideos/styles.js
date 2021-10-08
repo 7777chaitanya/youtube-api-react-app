@@ -31,7 +31,8 @@ const  useStyles = makeStyles(theme=>({
         border : "1px solid gray",
         borderRadius : "50px",
         backgroundColor : "rgb(147,104,247)"
-    }
+    },
+   
 }))
 
 export default useStyles;

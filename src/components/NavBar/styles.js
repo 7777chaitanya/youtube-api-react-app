@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
       [theme.breakpoints.up('sm')]: {
         display: 'block',
       },
+      textDecoration : 'none'
     },
     search: {
       position: 'relative',
@@ -53,6 +54,10 @@ const useStyles = makeStyles((theme) => ({
         },
       },
     },
+    navbarLogo:{
+      height : "3rem",
+      width : "3rem"
+  }
   }));
   
 

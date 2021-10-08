@@ -57,14 +57,15 @@ export default function NavBar() {
           >
             <MenuIcon />
           </IconButton>
+          <img src={`${process.env.PUBLIC_URL}/tv.png`} alt="logo" className={classes.navbarLogo} />
           <Typography
             className={classes.title}
-            variant="h6"
+            variant="h5"
             noWrap
             component={Link}
             to="/"
           >
-            Video Streamer
+            RGB
           </Typography>
           <form action="submit" onSubmit={handleSubmit}>
             <div className={classes.search}>
