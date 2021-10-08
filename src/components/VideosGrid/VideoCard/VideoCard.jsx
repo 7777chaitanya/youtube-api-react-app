@@ -65,13 +65,13 @@ export default function VideoCard({ eachVideo, playlistName }) {
   const returnRequiredLikeIcon = () => {
     if (liked) {
       return (
-        <IconButton onClick={handleDislike}>
+        <IconButton onClick={handleDislike} color="primary">
           <FavoriteIcon />
         </IconButton>
       );
     } else {
       return (
-        <IconButton onClick={handleLike}>
+        <IconButton onClick={handleLike} color="secondary">
           <FavoriteBorderIcon />
         </IconButton>
       );
@@ -91,13 +91,13 @@ export default function VideoCard({ eachVideo, playlistName }) {
   const returnRequiredSaveIcon = () => {
     if (saved) {
       return (
-        <IconButton onClick={handleUnsave}>
+        <IconButton onClick={handleUnsave} color="primary">
           <BookmarkIcon />
         </IconButton>
       );
     } else {
       return (
-        <IconButton onClick={handleSave}>
+        <IconButton onClick={handleSave} color="secondary">
           <BookmarkBorderIcon />
         </IconButton>
       );
@@ -149,15 +149,15 @@ export default function VideoCard({ eachVideo, playlistName }) {
         {returnRequiredLikeIcon()}
         {returnRequiredSaveIcon()}
         <IconButton aria-label="add to favorites" onClick={handleClick1}>
-          <PlaylistAddIcon />
+          <PlaylistAddIcon color="secondary"/>
         </IconButton>
 
         <IconButton aria-label="share">
-          <ShareIcon />
+          <ShareIcon color="secondary"/>
         </IconButton>
         {location.pathname!== "/" && 
         <IconButton onClick={() => removeVideoFromPlaylist(eachVideo, playlistName)}>
-          <RemoveCircleOutlineIcon />
+          <RemoveCircleOutlineIcon color="secondary" />
         </IconButton>}
       </CardActions>
       <IframePopover

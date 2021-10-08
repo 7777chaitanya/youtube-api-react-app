@@ -11,13 +11,14 @@ const theme = createTheme({
   palette: {
     primary: {
       light : "rgb(222,79,78)",
-      main: purple[500],
+      main: "rgb(147,104,247)",
       // dark
 
     },
     secondary: {
-      light : "rgb(91,96,116)",
-      main: green[500],
+      light : "rgb(239,239,241)",
+      main : "rgb(91,96,116)",
+      
     },
   },
 });

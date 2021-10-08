@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
       transform: 'rotate(180deg)',
     },
     avatar: {
-      backgroundColor: red[500],
+      backgroundColor: "rgb(147,104,247)",
     },
     iframeBox:{
         height : "30vh"
