@@ -15,6 +15,7 @@ import SidebarListItems from "./SidebarListItems/SidebarListItems";
 import SidebarAllPlaylists from "./SidebarAllPlaylists/SidebarAllPlaylists";
 import AllOutIcon from "@material-ui/icons/AllOut";
 import {Link} from "react-router-dom";
+import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 
 export default function SideDrawer({ toggleDrawer, state }) {
   const classes = useStyles();
@@ -35,22 +36,22 @@ export default function SideDrawer({ toggleDrawer, state }) {
       <List>
         <ListItem button component={Link} to="/allPlaylists">
           <ListItemIcon>
+            <PlaylistAddIcon />
+          </ListItemIcon>
+          <ListItemText primary="Create Playlist" />
+        </ListItem>
+      </List>
+      <Divider />
+      <List>
+        <ListItem button component={Link} to="/allPlaylists">
+          <ListItemIcon>
             <AllOutIcon />
           </ListItemIcon>
           <ListItemText primary="All Playlists" />
         </ListItem>
       </List>
       <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
+     
     </div>
   );
 
