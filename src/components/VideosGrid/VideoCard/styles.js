@@ -7,7 +7,8 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: 345,
       marginRight : "auto",
       marginLeft : "auto",
-      marginBottom : "1rem"
+      marginBottom : "1rem",
+      backgroundColor : "rgb(239,239,241)"
     },
     media: {
       height: 0,
