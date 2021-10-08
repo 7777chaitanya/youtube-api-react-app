@@ -5,11 +5,17 @@ import { PlaylistContext } from "../../contexts/PlaylistContext";
 import { IconButton, Typography, Paper, Box } from "@material-ui/core";
 import deletePlaylist from "../../firestoreFunctions/deletePlaylist";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
+
 
 const SavedVideosGrid = () => {
   const classes = useStyles();
   const { playlist } = useContext(PlaylistContext);
   console.log("sv => ", playlist?.savedVideos);
+
+  const handleGoToTop = () => {
+    window.scrollTo(0,0)
+}
 
   return (
     <div style={{ marginTop: "5rem" }}>
@@ -31,6 +37,11 @@ const SavedVideosGrid = () => {
       ) : (
         <VideosGrid videos={playlist?.savedVideos} playlistName="savedVideos" />
       )}
+       <Box className={classes.goToTopButtonBox}>
+        <IconButton onClick={handleGoToTop}>
+          <ArrowUpwardIcon />
+        </IconButton>
+      </Box>
     </div>
   );
 };
