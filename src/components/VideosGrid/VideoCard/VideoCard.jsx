@@ -189,11 +189,13 @@ export default function VideoCard({ eachVideo, playlistName }) {
           </IconButton>
         </Tooltip>
         {location.pathname !== "/" && (
-          <IconButton
-            onClick={() => removeVideoFromPlaylist(eachVideo, playlistName)}
-          >
-            <RemoveCircleOutlineIcon color="secondary" />
-          </IconButton>
+          <Tooltip title="Remove from playlist">
+            <IconButton
+              onClick={() => removeVideoFromPlaylist(eachVideo, playlistName)}
+            >
+              <RemoveCircleOutlineIcon color="secondary" />
+            </IconButton>
+          </Tooltip>
         )}
       </CardActions>
       <IframePopover

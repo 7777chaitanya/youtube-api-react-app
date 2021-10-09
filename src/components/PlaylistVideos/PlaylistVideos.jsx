@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { PlaylistContext } from "../../contexts/PlaylistContext";
 import VideosGrid from "../VideosGrid/VideosGrid";
-import { IconButton, Typography, Box } from "@material-ui/core";
+import { IconButton, Typography, Box, Divider } from "@material-ui/core";
 import deletePlaylist from "../../firestoreFunctions/deletePlaylist";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
@@ -40,6 +40,8 @@ const PlaylistVideos = (props) => {
             />
           </IconButton>
         </Box>
+        <Divider className={classes.headerDivider} />
+
 
         {playlist &&
           playlistName &&

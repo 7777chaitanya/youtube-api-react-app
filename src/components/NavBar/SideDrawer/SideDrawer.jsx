@@ -35,7 +35,7 @@ export default function SideDrawer({ toggleDrawer, state }) {
       <SidebarListItems />
       <Divider />
       <SidebarAllPlaylists />
-      <Divider />
+      {/* <Divider />
       <List>
         <ListItem button component={Link} to="/allPlaylists">
           <ListItemIcon>
@@ -43,7 +43,7 @@ export default function SideDrawer({ toggleDrawer, state }) {
           </ListItemIcon>
           <ListItemText primary="Create Playlist" />
         </ListItem>
-      </List>
+      </List> */}
       <Divider />
       <List>
         <ListItem button component={Link} to="/allPlaylists">
