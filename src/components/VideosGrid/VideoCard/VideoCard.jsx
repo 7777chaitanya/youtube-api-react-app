@@ -36,7 +36,7 @@ export default function VideoCard({ eachVideo, playlistName }) {
   const { playlist } = useContext(PlaylistContext);
   const location = useLocation();
 
-  console.log("video card => ",playlist)
+  // console.log("video card => ",playlist)
 
   const [liked, setLiked] = useState(()=>{
     return playlist?.likedVideos?.includes(eachVideo) ? true : false
