@@ -1,4 +1,4 @@
-# HippoWire - Chat application built using react 👫👫
+# RGB - Video streaming application built using react & Youtube API 📺
 
 ## TECH STACK
   * React
