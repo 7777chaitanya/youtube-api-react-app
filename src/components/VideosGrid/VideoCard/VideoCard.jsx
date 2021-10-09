@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import clsx from "clsx";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -28,14 +28,22 @@ import PlaylistPopover from "./PlaylistPopover/PlaylistPopover";
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import {useLocation} from "react-router-dom";
 import removeVideoFromPlaylist from "../../../firestoreFunctions/removeVideoFromPlaylist"
+import { PlaylistContext } from '../../../contexts/PlaylistContext';
 
 export default function VideoCard({ eachVideo, playlistName }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+  const { playlist } = useContext(PlaylistContext);
   const location = useLocation();
 
-  const [liked, setLiked] = useState(false);
-  const [saved, setSaved] = useState(false);
+  console.log("video card => ",playlist)
+
+  const [liked, setLiked] = useState(()=>{
+    return playlist?.likedVideos?.includes(eachVideo) ? true : false
+  });
+  const [saved, setSaved] = useState(()=>{
+    return playlist?.savedVideos?.includes(eachVideo) ? true : false
+  });
 
   //iframe popover state
   const [anchorEl, setAnchorEl] = React.useState(false);
