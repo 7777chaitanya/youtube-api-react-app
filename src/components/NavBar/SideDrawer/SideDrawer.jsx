@@ -16,6 +16,9 @@ import SidebarAllPlaylists from "./SidebarAllPlaylists/SidebarAllPlaylists";
 import AllOutIcon from "@material-ui/icons/AllOut";
 import {Link} from "react-router-dom";
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import GitHubIcon from '@material-ui/icons/GitHub';
 
 export default function SideDrawer({ toggleDrawer, state }) {
   const classes = useStyles();
@@ -51,6 +54,39 @@ export default function SideDrawer({ toggleDrawer, state }) {
         </ListItem>
       </List>
       <Divider />
+
+      <List>
+      <a href="https://github.com/Chaitanya7666" target="_blank" className={classes.socialMediaLinks}>
+        <ListItem button >
+          <ListItemIcon>
+            <GitHubIcon color="primary" />
+          </ListItemIcon>
+          <ListItemText primary="Github" />
+        </ListItem>
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/chaitanya-j-1799791b4/"
+          target="_blank"
+          className={classes.socialMediaLinks}
+        >
+        <ListItem button  >
+          <ListItemIcon>
+            <LinkedInIcon color="primary"/>
+          </ListItemIcon>
+          <ListItemText primary="Linkedin" />
+        </ListItem>
+        </a>
+
+        <a href="https://twitter.com/chaitanya7666" target="_blank" className={classes.socialMediaLinks}>
+        <ListItem button  >
+          <ListItemIcon>
+            <TwitterIcon color="primary"/>
+          </ListItemIcon>
+          <ListItemText primary="Twitter" />
+        </ListItem>
+        </a>
+      </List>
      
     </div>
   );

@@ -7,6 +7,10 @@ const useStyles = makeStyles({
     fullList: {
       width: 'auto',
     },
+    socialMediaLinks:{
+      textDecoration : "none", 
+      color  :"black"
+    }
   });
 
 export default useStyles;
