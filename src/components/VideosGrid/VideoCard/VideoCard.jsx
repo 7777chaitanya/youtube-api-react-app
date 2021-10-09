@@ -10,7 +10,8 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import Snackbar from "@material-ui/core/Snackbar";
+import Alert from "@material-ui/lab/Alert";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import useStyles from "./styles";
 import { Box } from "@material-ui/core";
@@ -25,10 +26,10 @@ import BookmarkIcon from "@material-ui/icons/Bookmark";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 import PlaylistAddIcon from "@material-ui/icons/PlaylistAdd";
 import PlaylistPopover from "./PlaylistPopover/PlaylistPopover";
-import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
-import {useLocation} from "react-router-dom";
-import removeVideoFromPlaylist from "../../../firestoreFunctions/removeVideoFromPlaylist"
-import { PlaylistContext } from '../../../contexts/PlaylistContext';
+import RemoveCircleOutlineIcon from "@material-ui/icons/RemoveCircleOutline";
+import { useLocation } from "react-router-dom";
+import removeVideoFromPlaylist from "../../../firestoreFunctions/removeVideoFromPlaylist";
+import { PlaylistContext } from "../../../contexts/PlaylistContext";
 
 export default function VideoCard({ eachVideo, playlistName }) {
   const classes = useStyles();
@@ -38,11 +39,11 @@ export default function VideoCard({ eachVideo, playlistName }) {
 
   // console.log("video card => ",playlist)
 
-  const [liked, setLiked] = useState(()=>{
-    return playlist?.likedVideos?.includes(eachVideo) ? true : false
+  const [liked, setLiked] = useState(() => {
+    return playlist?.likedVideos?.includes(eachVideo) ? true : false;
   });
-  const [saved, setSaved] = useState(()=>{
-    return playlist?.savedVideos?.includes(eachVideo) ? true : false
+  const [saved, setSaved] = useState(() => {
+    return playlist?.savedVideos?.includes(eachVideo) ? true : false;
   });
 
   //iframe popover state
@@ -123,7 +124,27 @@ export default function VideoCard({ eachVideo, playlistName }) {
     setAnchorEl1(null);
   };
 
- 
+  const [openUrlCopiedSnackBar, setOpenUrlCopiedSnackBar] =
+    React.useState(false);
+
+  const handleShareButtonSnackBarOpen = () => {
+    setOpenUrlCopiedSnackBar(true);
+  };
+
+  const handleShareButtonSnackBarClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpenUrlCopiedSnackBar(false);
+  };
+
+  const handleCopyImageUrl = () => {
+    navigator.clipboard.writeText(
+      `https://www.youtube.com/watch?v=${eachVideo.id.videoId}`
+    );
+    handleShareButtonSnackBarOpen();
+  };
 
   return (
     <Card className={classes.root}>
@@ -157,16 +178,19 @@ export default function VideoCard({ eachVideo, playlistName }) {
         {returnRequiredLikeIcon()}
         {returnRequiredSaveIcon()}
         <IconButton aria-label="add to favorites" onClick={handleClick1}>
-          <PlaylistAddIcon color="secondary"/>
+          <PlaylistAddIcon color="secondary" />
         </IconButton>
 
-        <IconButton aria-label="share">
-          <ShareIcon color="secondary"/>
+        <IconButton aria-label="share" onClick={handleCopyImageUrl}>
+          <ShareIcon color="secondary" />
         </IconButton>
-        {location.pathname!== "/" && 
-        <IconButton onClick={() => removeVideoFromPlaylist(eachVideo, playlistName)}>
-          <RemoveCircleOutlineIcon color="secondary" />
-        </IconButton>}
+        {location.pathname !== "/" && (
+          <IconButton
+            onClick={() => removeVideoFromPlaylist(eachVideo, playlistName)}
+          >
+            <RemoveCircleOutlineIcon color="secondary" />
+          </IconButton>
+        )}
       </CardActions>
       <IframePopover
         anchorEl={anchorEl}
@@ -175,13 +199,22 @@ export default function VideoCard({ eachVideo, playlistName }) {
         eachVideo={eachVideo}
       />
 
-
       <PlaylistPopover
         anchorEl1={anchorEl1}
         handleClick1={handleClick1}
         handleClose1={handleClose1}
         eachVideo={eachVideo}
       />
+
+      <Snackbar
+        open={openUrlCopiedSnackBar}
+        autoHideDuration={1000}
+        onClose={handleShareButtonSnackBarClose}
+      >
+        <Alert onClose={handleShareButtonSnackBarClose} severity="success">
+          Video URL copied!
+        </Alert>
+      </Snackbar>
     </Card>
   );
 }
