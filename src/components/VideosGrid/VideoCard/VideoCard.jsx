@@ -154,11 +154,7 @@ export default function VideoCard({ eachVideo, playlistName }) {
             {eachVideo?.snippet?.channelTitle[0].toUpperCase()}
           </Avatar>
         }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
+     
         title={eachVideo?.snippet?.channelTitle}
         subheader={new Date(eachVideo?.snippet?.publishTime).toDateString()}
       />
