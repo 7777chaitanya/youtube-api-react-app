@@ -7,7 +7,7 @@ const EachGridItem = ({ item }) => {
   return (
     <div>
       <Paper className={classes.eachItemCard} elevation={7} >
-        <Typography variant="h6">{item}</Typography>
+        <Typography variant="h6" align="center">{item}</Typography>
       </Paper>
     </div>
   );

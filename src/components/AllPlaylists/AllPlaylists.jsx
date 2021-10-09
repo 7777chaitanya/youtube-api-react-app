@@ -28,16 +28,17 @@ const AllPlaylists = () => {
 
   return (
       <>
-    <Grid container className={classes.playlistGrid}>
+    <Grid container className={classes.playlistGrid} justify="space-evenly">
       {playlist.allPlaylists?.map((item) => (
         <Grid
           item
           key={item}
           xs={6}
-          sm={4}
-          md={3}
+          sm={6}
+          md={4}
           component={Link}
           to={`/playlist/${item}`}
+          className={classes.eachItem}
         >
           <EachGridItem item={item} />
         </Grid>
