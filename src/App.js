@@ -9,11 +9,14 @@ import {
   HistoryPlaylist,
   AllPlaylists
 } from "./components";
+import CssBaseline from "@material-ui/core/CssBaseline";
+
 
 
 const App = () => {
   return (
     <div>
+      <CssBaseline />
       <Router>
         <NavBar />
         <Switch>
