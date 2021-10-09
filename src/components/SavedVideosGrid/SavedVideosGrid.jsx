@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import useStyles from "./styles";
 import VideosGrid from "../VideosGrid/VideosGrid";
 import { PlaylistContext } from "../../contexts/PlaylistContext";
-import { IconButton, Typography, Paper, Box } from "@material-ui/core";
+import { IconButton, Typography, Paper, Box, Tooltip } from "@material-ui/core";
 import deletePlaylist from "../../firestoreFunctions/deletePlaylist";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
@@ -38,9 +38,12 @@ const SavedVideosGrid = () => {
         <VideosGrid videos={playlist?.savedVideos} playlistName="savedVideos" />
       )}
        <Box className={classes.goToTopButtonBox}>
+       <Tooltip title="Go to top">
+
         <IconButton onClick={handleGoToTop}>
           <ArrowUpwardIcon />
         </IconButton>
+        </Tooltip>
       </Box>
     </div>
   );

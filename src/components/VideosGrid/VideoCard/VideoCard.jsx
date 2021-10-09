@@ -14,7 +14,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import useStyles from "./styles";
-import { Box } from "@material-ui/core";
+import { Box, Tooltip } from "@material-ui/core";
 import { motion } from "framer-motion";
 import IframePopover from "../IframePopover/IframePopover";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
@@ -177,13 +177,17 @@ export default function VideoCard({ eachVideo, playlistName }) {
       <CardActions disableSpacing>
         {returnRequiredLikeIcon()}
         {returnRequiredSaveIcon()}
-        <IconButton aria-label="add to favorites" onClick={handleClick1}>
-          <PlaylistAddIcon color="secondary" />
-        </IconButton>
+        <Tooltip title="Add to playlist">
+          <IconButton aria-label="add to favorites" onClick={handleClick1}>
+            <PlaylistAddIcon color="secondary" />
+          </IconButton>
+        </Tooltip>
 
-        <IconButton aria-label="share" onClick={handleCopyImageUrl}>
-          <ShareIcon color="secondary" />
-        </IconButton>
+        <Tooltip title="Copy video URL">
+          <IconButton aria-label="share" onClick={handleCopyImageUrl}>
+            <ShareIcon color="secondary" />
+          </IconButton>
+        </Tooltip>
         {location.pathname !== "/" && (
           <IconButton
             onClick={() => removeVideoFromPlaylist(eachVideo, playlistName)}
