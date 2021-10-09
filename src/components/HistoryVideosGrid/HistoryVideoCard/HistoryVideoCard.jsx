@@ -16,7 +16,6 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import useStyles from "./styles";
 import { Box, Tooltip } from "@material-ui/core";
 import { motion } from "framer-motion";
-import IframePopover from "../IframePopover/IframePopover";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import addToLikedVideos from "../../../firestoreFunctions/addToLikedVideos";
 import removeFromLikedVideos from "../../../firestoreFunctions/removeFromLikedVideos";
@@ -25,19 +24,22 @@ import removeFromSavedVideos from "../../../firestoreFunctions/removeFromSavedVi
 import BookmarkIcon from "@material-ui/icons/Bookmark";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 import PlaylistAddIcon from "@material-ui/icons/PlaylistAdd";
-import PlaylistPopover from "./PlaylistPopover/PlaylistPopover";
+import PlaylistPopover from "../../VideosGrid/VideoCard/PlaylistPopover/PlaylistPopover";
 import RemoveCircleOutlineIcon from "@material-ui/icons/RemoveCircleOutline";
 import { useLocation } from "react-router-dom";
 import removeVideoFromPlaylist from "../../../firestoreFunctions/removeVideoFromPlaylist";
 import { PlaylistContext } from "../../../contexts/PlaylistContext";
+import IframePopover from "../../VideosGrid/IframePopover/IframePopover";
 
-export default function VideoCard({ eachVideo, playlistName }) {
+
+
+export default function VideoCard({ eachVideo, playlistName, watchedDate }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const { playlist } = useContext(PlaylistContext);
   const location = useLocation();
 
-  // console.log("video card => ",playlist)
+  console.log("video card => ",watchedDate)
 
   const [liked, setLiked] = useState(() => {
     return playlist?.likedVideos?.includes(eachVideo) ? true : false;
@@ -154,13 +156,15 @@ export default function VideoCard({ eachVideo, playlistName }) {
             {eachVideo?.snippet?.channelTitle[0].toUpperCase()}
           </Avatar>
         }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
+        // action={
+        //   <IconButton aria-label="settings">
+        //     <MoreVertIcon />
+        //   </IconButton>
+        // }
         title={eachVideo?.snippet?.channelTitle}
-        subheader={new Date(eachVideo?.snippet?.publishTime).toDateString()}
+        // subheader={new Date(eachVideo?.snippet?.publishTime).toDateString()}
+        subheader={new Date(watchedDate).toDateString()}
+
       />
       <motion.div whileHover={{ scale: 0.9 }} whileTap={{ scale: 1.0 }}>
         <CardMedia
