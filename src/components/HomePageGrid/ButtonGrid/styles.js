@@ -5,9 +5,13 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(8),
     overflow: "auto",
     margin: theme.spacing(2),
+    '&::-webkit-scrollbar': {
+      display : "none"
+    },
+  },
+  buttonGroup: {
     
   },
-  buttonGroup: {},
 }));
 
 export default useStyles;
