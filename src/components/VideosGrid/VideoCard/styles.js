@@ -8,7 +8,8 @@ const useStyles = makeStyles((theme) => ({
       marginRight : "auto",
       marginLeft : "auto",
       marginBottom : "1rem",
-      backgroundColor : "rgb(239,239,241)"
+      backgroundColor : "rgb(239,239,241)",
+      minHeight : "26.5rem"
     },
     media: {
       height: 0,
